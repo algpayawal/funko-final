@@ -10,7 +10,6 @@ const db = mysql.createConnection({
     database: "funko"
 })
 
-
 // ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 app.use(express.json())
 app.use(cors())
@@ -27,15 +26,19 @@ app.get("/products", (req, res) => {
     })
 })
 
+
+// -----------------------create---------------------------- 
 app.post("/insertProducts", (req, res) => {
-    const q = "INSERT INTO `funko`.`products` (`category`,`license`,`product_name`, `product_no`, `product_description`, `price`) VALUES (?);"
+    const q = "INSERT INTO `funko`.`products` (`category`,`license`,`product_name`, `product_no`, `product_description`, `price`, `product_img1`, `product_img2`) VALUES (?);"
     const values = [
         req.body.category,
         req.body.license,
         req.body.product_name,
         req.body.product_no,
-        req.body_description,
-        req.body.price
+        req.body.product_description,
+        req.body.price,
+        req.body.product_img1,
+        req.body.product_img2
     ]
 
     db.query(q, [values], (err, data) => {
@@ -44,7 +47,8 @@ app.post("/insertProducts", (req, res) => {
     })
 })
 
-app.get("/products/:id", (req, res) => {
+// -----------------------read---------------------------- 
+app.get("/products/details/:id", (req, res) => {
     const productId = req.params.id;
     const q = 'SELECT * FROM funko.products WHERE id = ?'
     db.query(q, [productId], (err, data) => {
@@ -53,6 +57,41 @@ app.get("/products/:id", (req, res) => {
     })
 })
 
+
+// -----------------------update---------------------------- 
+app.put("/updateProducts/:id", (req, res) => {
+    const bookId = req.params.id;
+    const q = "UPDATE `funko`.`products` SET `category` = ?, `license` = ?, `product_name` = ?, `product_no` = ?, `product_description` = ?, `price` = ?, `product_img1` = ?, `product_img2` = ? WHERE id = ?"
+    const values = [
+        req.body.category,
+        req.body.license,
+        req.body.product_name,
+        req.body.product_no,
+        req.body.product_description,
+        req.body.price,
+        req.body.product_img1,
+        req.body.product_img2
+    ]
+
+    db.query(q, [...values, bookId], (err, data) => {
+        if (err) return res.json(err)
+        return res.json("product updated sucessfully")
+    })
+})
+
+
+// =========================================
+app.put("/deleteProducts/:id", (req, res) => {
+    const bookId = req.params.id;
+    const q = "DELETE FROM `funko`.`products` WHERE (`id` = ?);"
+    db.query(q, [bookId], (err, data) => {
+        if (err) return res.json(err)
+        return res.json("product deleted sucessfully")
+    })
+})
+
+
+
 app.listen(8080, () => {
-    console.log('connected to backesdndssss')
+    console.log('connected to backend SUCCESS')
 })

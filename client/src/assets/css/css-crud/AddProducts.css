@@ -1,0 +1,18 @@
+center {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.addinput input {
+    width: 200px;
+    padding: 20px;
+}
+
+.addinput {
+    padding-left: 20px;
+}
+
+.delete .addinput {
+    padding-left: 130px;
+}

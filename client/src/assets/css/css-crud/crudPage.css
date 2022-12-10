@@ -1,0 +1,38 @@
+center {
+    display: flex;
+    align-items: center;
+}
+
+.crud-head {
+    font-size: 55px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    padding-bottom: 50px;
+}
+
+.crudCont {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "add update delete";
+    padding-bottom: 100px;
+}
+
+.add {
+    grid-area: add;
+}
+
+.update {
+    grid-area: update;
+}
+
+.delete {
+    grid-area: delete;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}

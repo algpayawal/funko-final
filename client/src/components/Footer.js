@@ -96,9 +96,10 @@ const Footer = () => {
 const MainFooter = () => {
   return (
     <>
-        <SocialLink/>
+      <SocialLink/>
         <WebStore/>
         <Footer></Footer>
+
     </>
   )
 }

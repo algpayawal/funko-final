@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+.nr-head {
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.new-nr {
+    padding-top: 60px;
+    width: 87%;
+}
+
+.nr-products {
+    padding-left: 20px;
+    padding-bottom: 50px;
+}
+
+.prodCont {
+    overflow: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.nr-Img img {
+    width: 100%;
+}
+
+.nr-Img .rear-pic {
+    opacity: 0;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    z-index: -1;
+    -webkit-transition: opacity 0.2s ease-out;
+    -o-transition: opacity 0.4s ease-out;
+    transition: opacity 0.4s ease-out;
+}
+
+.prodCont:hover .rear-pic {
+    opacity: 1;
+    z-index: 0;
+}

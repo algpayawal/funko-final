@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App'; 
 import './assets/globals.css'
-import './assets/projectpage.css'
-import './assets/products.css'
+import './assets/css/css-pages/ProductsPage/prodpage.css'
+import './assets/css/css-pages/ProductsPage/products.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,34 +1,32 @@
 import React from 'react';
-import Navigation from './components/Navigation';  
-import ProjectPage from './pages/projectpage';
+import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-import {BrowserRouter,Routes,Route} from "react-router-dom"
-import Add from './pages_crud/Add';
-import Products from './pages_crud/Products';
-import Update from './pages_crud/Update';
-import ProductsContainer from './pages_crud/Products';
-import HomePage from './pages/homepage';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import CRUD from './crudPages/crudPage';
+import HomePage from './HomePage/HomePage';
+import ProductsPage from './ProductsPage/prod_page';
+import ProductsDetails from './ProductsPage/prod_details';
 
 function App() {
-  return (
-    <div className="App">
-      {<><Navigation />
-        <ProjectPage/>
-
-       </>
-      }
-
-      <BrowserRouter>
-        <Routes> 
-          <Route path='/home' element={<HomePage/>}/>
-          <Route path='/' element={<ProductsContainer/>}/>
-          <Route path='/add' element={<Add/>}/>
-          <Route path='/update' element={<Update/>}/>
-          <Route path='/product' element={<ProjectPage/>}/>
+    return ( 
+    <div className = "App"> { 
+    <> 
+    <Navigation/>      
+    </>
+    }
+        <BrowserRouter>
+        <Routes>
+        <Route path = '/' element = { <HomePage/> } /> 
+        <Route path = '/products' element = { <ProductsPage/> } /> 
+        <Route path = '/products/details/:id' element = { <ProductsDetails/> }/>
+        <Route path = '/crud' element = { <CRUD/> } /> 
         </Routes>
-      </BrowserRouter>
-    </div>
-  );
+        </BrowserRouter>
+
+    <Footer/>
+        </div>
+
+    );
 }
 
 export default App;
